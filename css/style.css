@@ -1,0 +1,141 @@
+/* Layout */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.col-sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+}
+
+.col-main {
+    width: 0;
+    flex: 3;
+}
+
+.col-order {
+    width: 0;
+    flex: 1;
+    background-color: #f8f9fa;
+    border-left: 1px solid #dee2e6;
+}
+
+/* Sidebar styling */
+.nav-link {
+    padding: 0.8rem 1rem;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-link:hover {
+    background-color: #e9ecef;
+    color: #198754;
+}
+
+.nav-link.active {
+    background-color: #e9ecef;
+    color: #198754;
+}
+
+.nav-link i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Category bar */
+.category-bar {
+    background-color: #fff;
+    white-space: nowrap;
+}
+
+.category-bar::-webkit-scrollbar {
+    height: 6px;
+}
+
+.category-bar::-webkit-scrollbar-thumb {
+    background-color: #dee2e6;
+    border-radius: 3px;
+}
+
+/* Menu grid */
+.menu-container {
+    height: calc(100vh - 60px); /* 60px adalah tinggi category bar */
+    overflow-y: auto;
+}
+
+.menu-item {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.menu-item:hover {
+    transform: translateY(-2px);
+}
+
+.menu-item img {
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Order panel */
+.order-items {
+    overflow-y: auto;
+}
+
+.order-item {
+    background-color: #fff;
+}
+
+.quantity-control {
+    width: 120px;
+}
+
+.quantity-control input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    background: transparent;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .col-sidebar {
+        position: fixed;
+        left: -250px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s;
+    }
+    
+    .col-sidebar.show {
+        left: 0;
+    }
+    
+    .col-main {
+        flex: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-main, .col-order {
+        flex: none;
+        width: 100%;
+    }
+    
+    .col-order {
+        position: fixed;
+        bottom: -100%;
+        height: 80vh;
+        transition: bottom 0.3s;
+        z-index: 999;
+    }
+    
+    .col-order.show {
+        bottom: 0;
+    }
+}
